@@ -8,11 +8,12 @@
     <title>
         Top 30 Night Songs
     </title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    <style> .carousel-inner > .item > img,
+    <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <style>
+    .carousel-inner > .item > img,
     .carousel-inner > .item > a > img {
         width: 40%;
         margin: 0 auto;
@@ -23,6 +24,12 @@
         color: yellow;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
+    
+    /*.carousel-inner {
+        position: relative;
+        top: 50%;
+        transform: : translateY(-50%);
+    }*/
     
     .top-10-name {
         text-align: center;
@@ -36,6 +43,19 @@
 </head>
 
 <body>
+    <div class="bs-example">
+        <div class="btn-group">
+            <button class="btn btn-info"><span class="glyphicon glyphicon-file"></span> Document</button>
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-print"></span> Print</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="container">
         <h1 class="top-10-name">
             <strong>
@@ -299,19 +319,6 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
-    </div>
-    <div class="bs-example">
-        <div class="btn-group">
-            <button class="btn btn-info"><span class="glyphicon glyphicon-file"></span> Document</button>
-            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-print"></span> Print</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
-            </ul>
         </div>
     </div>
     <script>
