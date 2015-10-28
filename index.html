@@ -25,15 +25,27 @@
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
     
-    /*.carousel-inner {
-        position: relative;
-        top: 50%;
-        transform: : translateY(-50%);
-    }*/
-    
     .top-10-name {
         text-align: center;
-        color: orange;
+        color: #FF9933;
+        margin: 0 auto;
+    }
+    
+    .btn-lst {
+        background: #CCCC00 none repeat scroll 0 0;
+        border-color: #d43f3a;
+        border: 1px solid transparent;
+        color: black;
+        margin: 20px 20px;
+        margin-bottom: 0;
+    }
+    
+    .btn-lst:hover {
+        background: #E6E600 none repeat scroll 0 0;
+    }
+
+    audio {
+        background-color: green;
     }
     
     body {
@@ -43,18 +55,13 @@
 </head>
 
 <body>
-    <div class="bs-example">
-        <div class="btn-group">
-            <button class="btn btn-info"><span class="glyphicon glyphicon-file"></span> Document</button>
-            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-print"></span> Print</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
-            </ul>
-        </div>
+    <div class="dropdown">
+        <a data-toggle="dropdown" class="btn btn-lst dropdown-toggle" type="button" onmouseover="bigImg(this)" href="" onMouseOver="document.bgColor='green'">List Theme<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Cruising Songs</a></li>
+            <li><a href="#">Summer Songs</a></li>
+            <li><a href="#">Introspective Hip Hop Songs</a></li>
+        </ul>
     </div>
     <div class="container">
         <h1 class="top-10-name">
@@ -63,13 +70,16 @@
             </strong>
         </h1>
         <br>
-        <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide" data-interval="false">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <a href="https://www.youtube.com/watch?v=ovsjkYytGOU" target="_blank">
-                        <img src="albumcovers/4am_kaskade.jpg" alt="Chania" width="460" height="345">
-                    </a>
+                    <img src="albumcovers/4am_kaskade.jpg" alt="Chania" width="460" height="345">
+                    <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
+                        <audio controls>
+                            <source src="mp3s/4am_kaskade_song.mp3" type="audio/mp3">
+                        </audio>
+                    </div>
                     <div class="carousel-caption">
                         <h3>4 AM</h3>
                         <p>Kaskade</p>
