@@ -76,7 +76,7 @@
                 <div class="item active">
                     <img src="albumcovers/4am_kaskade.jpg" alt="Chania" width="460" height="345">
                     <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
-                        <audio controls>
+                        <audio id="myAudio" controls>
                             <source src="mp3s/4am_kaskade_song.mp3" type="audio/mp3">
                         </audio>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="item">
                     <img src="albumcovers/1970somethin_thenotoriousbig.jpg" alt="Chania" width="460" height="345">
                     <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
-                        <audio controls>
+                        <audio id="myAudio_2" controls>
                             <source src="mp3s/1970somethin_thenotoriousbig_song.mp3" type="audio/mp3">
                         </audio>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="item">
                     <img src="albumcovers/asongforourfathers_explosionsinthesky.jpg" alt="Chania" width="460" height="345">
                     <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
-                        <audio controls>
+                        <audio id="myAudio_3" controls>
                             <source src="mp3s/asongforourfathers_explosionsinthesky_song.mp3" type="audio/mp3">
                         </audio>
                     </div>
@@ -112,7 +112,7 @@
                 <div class="item">
                     <img src="albumcovers/astronauts_oneeskimo.jpg" alt="Chania" width="460" height="345">
                     <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
-                        <audio controls>
+                        <audio id="myAudio_4" controls>
                             <source src="mp3s/astronauts_oneeskimo_song.mp3" type="audio/mp3">
                         </audio>
                     </div>
@@ -124,7 +124,7 @@
                 <div class="item">
                     <img src="albumcovers/boadicea_enya.jpg" alt="Chania" width="460" height="345">
                     <div style="margin: 350px 325px; position:absolute; top:0; left:0;">
-                        <audio controls>
+                        <audio id="myAudio_5" controls>
                             <source src="mp3s/boadicea_enya_song.mp3" type="audio/mp3">
                         </audio>
                     </div>
@@ -365,9 +365,21 @@
         // Enable Carousel Controls
         $(".left").click(function() {
             $("#myCarousel").carousel("prev");
+
+            myAudio.pause();
+            myAudio_2.pause();
+            myAudio_3.pause();
+            myAudio_4.pause();
+            myAudio_5.pause();
         });
         $(".right").click(function() {
             $("#myCarousel").carousel("next");
+
+            myAudio.pause();
+            myAudio_2.pause();
+            myAudio_3.pause();
+            myAudio_4.pause();
+            myAudio_5.pause();
         });
     });
     </script>
