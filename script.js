@@ -85,7 +85,6 @@ function addSongs(item, song) {
 }
 
 function generateListTheme(theme, albumcovers, mp3s, captions) {
-    console.log("theme", theme);
     for (iDx = 0; iDx < albumcovers.length; iDx++) {
         var themeObj = {
             "albumcover": albumcovers[iDx],
@@ -94,6 +93,4 @@ function generateListTheme(theme, albumcovers, mp3s, captions) {
         };
         theme.push(themeObj);
     }
-    console.log("theme", theme);
-    console.log("theme.length", theme.length);
 }
