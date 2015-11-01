@@ -7,7 +7,7 @@ var nightAlbumCovers = ["4am_kaskade.jpg", "1970somethin_thenotoriousbig.jpg", "
     "madeyoulook_nas.jpg", "midnightcity_m83.jpg", "nightcall_kavinsky.png", "nightsout_metronomy.jpg", "nightsoutro_metronomy.jpg",
     "pastmistake_tricky.jpg", "sevenmonths_portishead.png", "sierraleone_mteden.jpg", "sohigh_dojacat.jpg",
     "thedistrictsleepsalonetonight_thepostalservice.jpg", "thegreatgiginthesky_pinkfloyd.png", "thehours_beachhouse.png",
-    "thesideshow_mistahfab.jpg", "traces_thekickdrums.jpg"
+    "thesideshow_mistahfab.jpg"
 ];
 var nightMP3s = ["4am_kaskade_song", "1970somethin_thenotoriousbig_song", "asongforourfathers_explosionsinthesky_song",
     "astronauts_oneeskimo_song", "boadicea_enya_song", "copernicuslanding_kidcudi_song", "driveslow_kanyewest_song",
@@ -16,7 +16,7 @@ var nightMP3s = ["4am_kaskade_song", "1970somethin_thenotoriousbig_song", "asong
     "nightcall_kavinsky_song", "nightsout_metronomy_song", "nightsoutro_metronomy_song", "pastmistake_tricky_song",
     "sevenmonths_portishead_song", "sierraleone_mteden_song", "sohigh_dojacat_song",
     "thedistrictsleepsalonetonight_thepostalservice_song", "thegreatgiginthesky_pinkfloyd_song", "thehours_beachhouse_song",
-    "thesideshow_mistahfab_song", "traces_thekickdrums_song"
+    "thesideshow_mistahfab_song"
 ];
 var nightCaptions = ["4AM, Kaskade", "1970 Somethin, The Notorious B.I.G.", "A Song For Our Fathers, Explosions In The Sky",
     "Astronauts, One Eskimo", "Boadicea, Enya", "Copernicus Landing, Kid Cudi", "Drive Slow, Kanye West", "Fast Life, Kool G. Rap",
@@ -24,7 +24,7 @@ var nightCaptions = ["4AM, Kaskade", "1970 Somethin, The Notorious B.I.G.", "A S
     "Jabber, Blue Foundation", "Made You Look, Nas", "Midnight City, M83", "Nightcall, Kavinsky", "Nights Out, Metronomy",
     "Nights Outro, Metronomy", "Past Mistake, Tricky", "Seven Months, Portishead", "Sierra Leone, Mt. Eden", "So High, Doja Cat",
     "The District Sleeps Alone Tonight, The Postal Service", "The Great Gig in the Sky, Pink Floyd", "The Hours, Beach House",
-    "The Sideshow, Mistah Fab", "Traces, The Kickdrums"
+    "The Sideshow, Mistah Fab"
 ];
 generateListTheme(night, nightAlbumCovers, nightMP3s, nightCaptions);
 addWrappers(night);
@@ -65,23 +65,20 @@ function addCaptions(item, song) {
 }
 
 function addSongs(item, song) {
-    if (songsAdded < 5) {
-        var enableControls = function(a) {
-            a.controls = true;
-            a.load();
-        }
-        var d = document.createElement('div');
-        d.setAttribute('style', "margin: 350px 325px; position:absolute; top:0; left:0;");
-        var aud = document.createElement('audio');
-        aud.setAttribute('id', "myAudio");
-        enableControls(aud);
-        var source = document.createElement('source');
-        source.setAttribute('src', "mp3s/" + song.mp3 + ".mp3");
-        aud.appendChild(source);
-        d.appendChild(aud);
-        item.appendChild(d);
-        songsAdded++;
+    var enableControls = function(a) {
+        a.controls = true;
+        a.load();
     }
+    var d = document.createElement('div');
+    d.setAttribute('style', "margin: 350px 325px; position:absolute; top:0; left:0;");
+    var aud = document.createElement('audio');
+    aud.setAttribute('id', "myAudio");
+    enableControls(aud);
+    var source = document.createElement('source');
+    source.setAttribute('src', "mp3s/" + song.mp3 + ".mp3");
+    aud.appendChild(source);
+    d.appendChild(aud);
+    item.appendChild(d);
 }
 
 function generateListTheme(theme, albumcovers, mp3s, captions) {
