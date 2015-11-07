@@ -1,6 +1,91 @@
 var data = {};
 initData(data);
 
+function addCaptions(item, song) {
+    var caption = document.createElement('div');
+    caption.setAttribute('class', "carousel-caption");
+    var songTitle = document.createElement('h3');
+    songTitle.innerHTML = song.caption.substring(0, song.caption.indexOf(','));
+    var artist = document.createElement('p');
+    artist.innerHTML = song.caption.substring(song.caption.indexOf(',') + 1, song.caption.length);
+
+    caption.appendChild(songTitle);
+    caption.appendChild(artist);
+    item.appendChild(caption);
+}
+
+function addImages(item, song) {
+    var image = document.createElement('img');
+    image.setAttribute('src', "albumcovers/" + song.name + '/' + song.albumcover);
+    item.appendChild(image);
+}
+
+function addSongs(item, song) {
+    var enableControls = function(a) {
+        a.controls = true;
+        a.load();
+    }
+    var d = document.createElement('div');
+    d.setAttribute('style', "margin: 350px 325px; position:absolute; top:0; left:0;");
+    var aud = document.createElement('audio');
+    aud.setAttribute('id', "myAudio");
+    enableControls(aud);
+    var source = document.createElement('source');
+    source.setAttribute('src', "mp3s/" + song.name + '/' + song.mp3 + ".mp3");
+    aud.appendChild(source);
+    d.appendChild(aud);
+    item.appendChild(d);
+}
+
+function addWrappers(theme) {
+    if (data.initialCrsl) {
+        var carousel = document.getElementById("crsl");
+        for (var iDx = 0; iDx < theme.length; iDx++) {
+            var itemDiv = document.createElement('div');
+            if (iDx == 0) {
+                itemDiv.setAttribute('class', 'item active');
+            } else {
+                itemDiv.setAttribute('class', 'item');
+            }
+            carousel.appendChild(itemDiv);
+            addImages(itemDiv, theme[iDx]);
+            addCaptions(itemDiv, theme[iDx]);
+            addSongs(itemDiv, theme[iDx]);
+        };
+        data.initialCrsl = false;
+    } else {
+        var carousel = document.getElementById("crsl");
+        while (carousel.firstChild) {
+            carousel.removeChild(carousel.firstChild);
+        }
+
+        for (var iDx = 0; iDx < theme.length; iDx++) {
+            var itemDiv = document.createElement('div');
+            if (iDx == 0) {
+                itemDiv.setAttribute('class', 'item active');
+            } else {
+                itemDiv.setAttribute('class', 'item');
+            }
+            carousel.appendChild(itemDiv);
+            addImages(itemDiv, theme[iDx]);
+            addCaptions(itemDiv, theme[iDx]);
+            addSongs(itemDiv, theme[iDx]);
+        }
+    }
+}
+
+function generateListTheme(theme, albumcovers, mp3s, captions, name) {
+    for (iDx = 0; iDx < albumcovers.length; iDx++) {
+        var themeObj = {
+            "albumcover": albumcovers[iDx],
+            "mp3": mp3s[iDx],
+            "caption": captions[iDx],
+            "name": name
+        };
+        theme.push(themeObj);
+    }
+}
+
 function initData(dat) {
     dat.initialCrsl = true;
     dat.cruising = [];
@@ -118,89 +203,4 @@ function initData(dat) {
     generateListTheme(dat.night, dat.nightAlbumCovers, dat.nightMP3s, dat.nightCaptions, 'night');
     generateListTheme(dat.summer, dat.summerAlbumCovers, dat.summerMP3s, dat.summerCaptions, 'summer');
     addWrappers(dat.night);
-}
-
-function addWrappers(theme) {
-    if (data.initialCrsl) {
-        var carousel = document.getElementById("crsl");
-        for (var iDx = 0; iDx < theme.length; iDx++) {
-            var itemDiv = document.createElement('div');
-            if (iDx == 0) {
-                itemDiv.setAttribute('class', 'item active');
-            } else {
-                itemDiv.setAttribute('class', 'item');
-            }
-            carousel.appendChild(itemDiv);
-            addImages(itemDiv, theme[iDx]);
-            addCaptions(itemDiv, theme[iDx]);
-            addSongs(itemDiv, theme[iDx]);
-        };
-        data.initialCrsl = false;
-    } else {
-        var carousel = document.getElementById("crsl");
-        while (carousel.firstChild) {
-            carousel.removeChild(carousel.firstChild);
-        }
-
-        for (var iDx = 0; iDx < theme.length; iDx++) {
-            var itemDiv = document.createElement('div');
-            if (iDx == 0) {
-                itemDiv.setAttribute('class', 'item active');
-            } else {
-                itemDiv.setAttribute('class', 'item');
-            }
-            carousel.appendChild(itemDiv);
-            addImages(itemDiv, theme[iDx]);
-            addCaptions(itemDiv, theme[iDx]);
-            addSongs(itemDiv, theme[iDx]);
-        }
-    }
-}
-
-function addImages(item, song) {
-    var image = document.createElement('img');
-    image.setAttribute('src', "albumcovers/" + song.name + '/' + song.albumcover);
-    item.appendChild(image);
-}
-
-function addCaptions(item, song) {
-    var caption = document.createElement('div');
-    caption.setAttribute('class', "carousel-caption");
-    var songTitle = document.createElement('h3');
-    songTitle.innerHTML = song.caption.substring(0, song.caption.indexOf(','));
-    var artist = document.createElement('p');
-    artist.innerHTML = song.caption.substring(song.caption.indexOf(',') + 1, song.caption.length);
-
-    caption.appendChild(songTitle);
-    caption.appendChild(artist);
-    item.appendChild(caption);
-}
-
-function addSongs(item, song) {
-    var enableControls = function(a) {
-        a.controls = true;
-        a.load();
-    }
-    var d = document.createElement('div');
-    d.setAttribute('style', "margin: 350px 325px; position:absolute; top:0; left:0;");
-    var aud = document.createElement('audio');
-    aud.setAttribute('id', "myAudio");
-    enableControls(aud);
-    var source = document.createElement('source');
-    source.setAttribute('src', "mp3s/" + song.name + '/' + song.mp3 + ".mp3");
-    aud.appendChild(source);
-    d.appendChild(aud);
-    item.appendChild(d);
-}
-
-function generateListTheme(theme, albumcovers, mp3s, captions, name) {
-    for (iDx = 0; iDx < albumcovers.length; iDx++) {
-        var themeObj = {
-            "albumcover": albumcovers[iDx],
-            "mp3": mp3s[iDx],
-            "caption": captions[iDx],
-            "name": name
-        };
-        theme.push(themeObj);
-    }
 }
