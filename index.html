@@ -98,15 +98,15 @@
             $(".cruising").click(function() {
                 document.getElementById("list-name").innerHTML = "TOP CRUISING SONGS";
                 $(".crsl").toggle();
-                addWrappers(cruising);
+                addWrappers(data.cruising);
             });
             $(".introspective").click(function() {
                 document.getElementById("list-name").innerHTML = "TOP INTROSPECTIVE HIP HOP SONGS";
-                addWrappers(introspec);
+                addWrappers(data.introspec);
             });
             $(".summer").click(function() {
                 document.getElementById("list-name").innerHTML = "TOP SUMMER SONGS";
-                addWrappers(summer);
+                addWrappers(data.summer);
             });
         });
         </script>
