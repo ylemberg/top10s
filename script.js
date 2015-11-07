@@ -39,7 +39,53 @@ function addSongs(item, song) {
 
 function addWrappers(theme) {
     if (data.initialCrsl) {
-        var carousel = document.getElementById("crsl");
+        var homeBtns = document.getElementById("homepage");
+        var homeBtnsPrnt = document.createElement("div");
+        homeBtnsPrnt.appendChild(homeBtns);
+        homeBtnsPrnt.removeChild(homeBtns);
+
+        var cntr = document.getElementsByClassName("container")[0];
+        var crsl = document.createElement("div");
+        crsl.setAttribute('id', "myCarousel");
+        crsl.setAttribute('class', "carousel slide");
+        crsl.setAttribute('data-interval', "false");
+        cntr.appendChild(crsl);
+        var crslInner = document.createElement("div");
+        crslInner.setAttribute('class', "carousel-inner");
+        crslInner.setAttribute('role', "listbox");
+        crslInner.setAttribute('id', 'crsl');
+        var left = document.createElement("a");
+        left.setAttribute('class', "left carousel-control");
+        left.setAttribute('href', "#myCarousel");
+        left.setAttribute('role', "button");
+        left.setAttribute('onclick', "left()");
+        left.setAttribute('data-slide', "prev");
+        var lSpan1 = document.createElement("span");
+        lSpan1.setAttribute('class', "glyphicon glyphicon-chevron-left");
+        lSpan1.setAttribute('aria-hidden', "true");
+        var lSpan2 = document.createElement("span");
+        lSpan2.setAttribute('class', "sr-only");
+        lSpan2.innerHTML = "Previous";
+        left.appendChild(lSpan1);
+        left.appendChild(lSpan2);
+        var right = document.createElement("a");
+        right.setAttribute('class', "right carousel-control");
+        right.setAttribute('href', "#myCarousel");
+        right.setAttribute('role', "button");
+        right.setAttribute('onclick', "right()");
+        right.setAttribute('data-slide', "next");
+        var rSpan1 = document.createElement("span");
+        rSpan1.setAttribute('class', "glyphicon glyphicon-chevron-right");
+        rSpan1.setAttribute('aria-hidden', "true");
+        var rSpan2 = document.createElement("span");
+        rSpan2.setAttribute('class', "sr-only");
+        rSpan2.innerHTML = "Next";
+        right.appendChild(rSpan1);
+        right.appendChild(rSpan2);
+        crsl.appendChild(crslInner);
+        crsl.appendChild(left);
+        crsl.appendChild(right);
+
         for (var iDx = 0; iDx < theme.length; iDx++) {
             var itemDiv = document.createElement('div');
             if (iDx == 0) {
@@ -47,7 +93,7 @@ function addWrappers(theme) {
             } else {
                 itemDiv.setAttribute('class', 'item');
             }
-            carousel.appendChild(itemDiv);
+            crslInner.appendChild(itemDiv);
             addImages(itemDiv, theme[iDx]);
             addCaptions(itemDiv, theme[iDx]);
             addSongs(itemDiv, theme[iDx]);
@@ -202,5 +248,35 @@ function initData(dat) {
     generateListTheme(dat.introspec, dat.introspecAlbumCovers, dat.introspecMP3s, dat.introspecCaptions, 'introspectivehiphop');
     generateListTheme(dat.night, dat.nightAlbumCovers, dat.nightMP3s, dat.nightCaptions, 'night');
     generateListTheme(dat.summer, dat.summerAlbumCovers, dat.summerMP3s, dat.summerCaptions, 'summer');
-    addWrappers(dat.night);
+    //addWrappers(dat.night);
+}
+
+function cruising() {
+    document.getElementById("list-name").innerHTML = "TOP CRUISING SONGS";
+    addWrappers(data.cruising);
+}
+
+function introspective() {
+    document.getElementById("list-name").innerHTML = "TOP INTROSPECTIVE HIP HOP SONGS";
+    addWrappers(data.introspec);
+}
+
+function night() {
+    document.getElementById("list-name").innerHTML = "TOP NIGHT SONGS";
+    addWrappers(data.night);
+}
+
+function summer() {
+    document.getElementById("list-name").innerHTML = "TOP SUMMER SONGS";
+    addWrappers(data.summer);
+}
+
+function left() {
+    console.log("left");
+    //document.getElementById("myCarousel").carousel("prev");
+}
+
+function right() {
+    console.log("right");
+    //document.getElementById("myCarousel").carousel("next");
 }

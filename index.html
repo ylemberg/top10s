@@ -44,25 +44,52 @@
         background: #E6E600 none repeat scroll 0 0;
     }
     
+    #homepage {
+        margin: 300px auto;
+        text-align: center;
+    }
+    
+    .btn-group-justified {
+        margin: 0 auto;
+    }
+    
     audio {
         background-color: green;
     }
     
     body {
-        background-color: blue
+        background-color: gray
     }
     </style>
 </head>
 
 <body>
-    <div class="dropdown">
+    <div>
+        <div id="homepage">
+            <div class="btn-group" role="group">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-lg" onclick="cruising()">Cruising Songs</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-lg" onclick="introspective()">Introspective Hip Hop Songs</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-lg" onclick="night()">Night Songs</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-lg" onclick="summer()">Summer Songs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="dropdown">
         <a data-toggle="dropdown" class="btn btn-lst dropdown-toggle" type="button" href="">List Theme<b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li><a href="#" class="cruising">Cruising Songs</a></li>
             <li><a href="#" class="summer">Summer Songs</a></li>
             <li><a href="#" class="introspective hip hop">Introspective Hip Hop Songs</a></li>
         </ul>
-    </div>
+    </div>-->
     <div class="container">
         <h1 class="top-10-name">
             <strong id="list-name">
@@ -70,8 +97,7 @@
             </strong>
         </h1>
         <br>
-        <div id="myCarousel" class="carousel slide" data-interval="false">
-            <!-- Wrapper for slides -->
+        <!--<div id="myCarousel" class="carousel slide" data-interval="false">
             <div class="carousel-inner" role="listbox" id="crsl">
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button">
@@ -82,31 +108,34 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+        </div>-->
         <script>
         $(document).ready(function() {
             // Enable Carousel Controls
             $(".left").click(function() {
+                debugger;
+                document.getElementById("list-name").innerHTML = "LEFT";
                 $("#myCarousel").carousel("prev");
                 myAudio.pause();
-                
             });
             $(".right").click(function() {
+                debugger;
+                document.getElementById("list-name").innerHTML = "RIGHT";
                 $("#myCarousel").carousel("next");
                 myAudio.pause();
             });
             $(".cruising").click(function() {
-                document.getElementById("list-name").innerHTML = "TOP CRUISING SONGS";
-                $(".crsl").toggle();
                 addWrappers(data.cruising);
+                console.log("E still crusin");
             });
             $(".introspective").click(function() {
-                document.getElementById("list-name").innerHTML = "TOP INTROSPECTIVE HIP HOP SONGS";
                 addWrappers(data.introspec);
             });
             $(".summer").click(function() {
-                document.getElementById("list-name").innerHTML = "TOP SUMMER SONGS";
                 addWrappers(data.summer);
+            });
+            $(".carousel-control").click(function() {
+                console.log("clicked on carousel-control");
             });
         });
         </script>
