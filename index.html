@@ -56,16 +56,16 @@
 
 <body>
     <div class="dropdown">
-        <a data-toggle="dropdown" class="btn btn-lst dropdown-toggle" type="button" onmouseover="bigImg(this)" href="" onMouseOver="document.bgColor='green'">List Theme<b class="caret"></b></a>
+        <a data-toggle="dropdown" class="btn btn-lst dropdown-toggle" type="button" href="">List Theme<b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="#">Cruising Songs</a></li>
-            <li><a href="#">Summer Songs</a></li>
-            <li><a href="#">Introspective Hip Hop Songs</a></li>
+            <li><a href="#" class="cruising">Cruising Songs</a></li>
+            <li><a href="#" class="summer">Summer Songs</a></li>
+            <li><a href="#" class="introspective hip hop">Introspective Hip Hop Songs</a></li>
         </ul>
     </div>
     <div class="container">
         <h1 class="top-10-name">
-            <strong>
+            <strong id="list-name">
                 TOP NIGHT SONGS
             </strong>
         </h1>
@@ -103,6 +103,19 @@
                 myAudio_3.pause();
                 myAudio_4.pause();
                 myAudio_5.pause();
+            });
+            $(".cruising").click(function() {
+                document.getElementById("list-name").innerHTML = "TOP CRUISING SONGS";
+                $(".crsl").toggle();
+                addWrappers(cruising);
+            });
+            $(".introspective").click(function() {
+                document.getElementById("list-name").innerHTML = "TOP INTROSPECTIVE HIP HOP SONGS";
+                addWrappers(introspec);
+            });
+            $(".summer").click(function() {
+                document.getElementById("list-name").innerHTML = "TOP SUMMER SONGS";
+                addWrappers(summer);
             });
         });
         </script>

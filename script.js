@@ -1,4 +1,4 @@
-var songsAdded = 0;
+var initialCrsl = true;
 
 var cruising = [];
 var cruisingAlbumCovers = ["beautyinthedark_mosdef.jpg", "bounce_logic.jpg", "cantdowithoutyou_caribou.jpg", "cutiepie_oneway.jpg",
@@ -113,25 +113,43 @@ generateListTheme(cruising, cruisingAlbumCovers, cruisingMP3s, cruisingCaptions,
 generateListTheme(introspec, introspecAlbumCovers, introspecMP3s, introspecCaptions, 'introspectivehiphop');
 generateListTheme(night, nightAlbumCovers, nightMP3s, nightCaptions, 'night');
 generateListTheme(summer, summerAlbumCovers, summerMP3s, summerCaptions, 'summer');
-//addWrappers(cruising);
-//addWrappers(introspec);
 addWrappers(night);
-//addWrappers(summer);
 
 function addWrappers(theme) {
-    var carousel = document.getElementById("crsl");
-    for (var iDx = 0; iDx < theme.length; iDx++) {
-        var itemDiv = document.createElement('div');
-        if (iDx == 0) {
-            itemDiv.setAttribute('class', 'item active');
-        } else {
-            itemDiv.setAttribute('class', 'item');
+    if (initialCrsl) {
+        var carousel = document.getElementById("crsl");
+        for (var iDx = 0; iDx < theme.length; iDx++) {
+            var itemDiv = document.createElement('div');
+            if (iDx == 0) {
+                itemDiv.setAttribute('class', 'item active');
+            } else {
+                itemDiv.setAttribute('class', 'item');
+            }
+            carousel.appendChild(itemDiv);
+            addImages(itemDiv, theme[iDx]);
+            addCaptions(itemDiv, theme[iDx]);
+            addSongs(itemDiv, theme[iDx]);
+        };
+        initialCrsl = false;
+    } else {
+        var carousel = document.getElementById("crsl");
+        while (carousel.firstChild) {
+            carousel.removeChild(carousel.firstChild);
         }
-        carousel.appendChild(itemDiv);
-        addImages(itemDiv, theme[iDx]);
-        addCaptions(itemDiv, theme[iDx]);
-        addSongs(itemDiv, theme[iDx]);
-    };
+
+        for (var iDx = 0; iDx < theme.length; iDx++) {
+            var itemDiv = document.createElement('div');
+            if (iDx == 0) {
+                itemDiv.setAttribute('class', 'item active');
+            } else {
+                itemDiv.setAttribute('class', 'item');
+            }
+            carousel.appendChild(itemDiv);
+            addImages(itemDiv, theme[iDx]);
+            addCaptions(itemDiv, theme[iDx]);
+            addSongs(itemDiv, theme[iDx]);
+        }
+    }
 }
 
 function addImages(item, song) {
@@ -154,7 +172,6 @@ function addCaptions(item, song) {
 }
 
 function addSongs(item, song) {
-    debugger;
     var enableControls = function(a) {
         a.controls = true;
         a.load();
