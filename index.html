@@ -27,10 +27,9 @@
     
     .top-10-name {
         text-align: center;
-        color:#000000;
+        color: #000000;
         margin: 0 auto;
     }
-    
     /*.btn-lst {
         background: #CCCC00 none repeat scroll 0 0;
         border-color: #d43f3a;
@@ -60,22 +59,22 @@
 </head>
 
 <body>
-        <div id="homepage">
+    <div id="homepage">
+        <div class="btn-group" role="group">
             <div class="btn-group" role="group">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default btn-lg" onclick="cruising()">Cruising Songs</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default btn-lg" onclick="introspective()">Introspective Hip Hop Songs</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default btn-lg" onclick="night()">Night Songs</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default btn-lg" onclick="summer()">Summer Songs</button>
-                </div>
+                <button type="button" class="btn btn-default btn-lg" onclick="cruising()">Cruising Songs</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-lg" onclick="introspective()">Introspective Hip Hop Songs</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-lg" onclick="night()">Night Songs</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-lg" onclick="summer()">Summer Songs</button>
             </div>
         </div>
+    </div>
     <div class="container">
         <h1 class="top-10-name">
             <strong id="list-name">
@@ -86,7 +85,6 @@
         $(document).ready(function() {
             $(".cruising").click(function() {
                 addWrappers(data.cruising);
-                console.log("E still crusin");
             });
             $(".introspective").click(function() {
                 addWrappers(data.introspec);
