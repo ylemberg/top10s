@@ -39,10 +39,7 @@ function addSongs(item, song) {
 
 function addWrappers(theme) {
     if (data.initialCrsl) {
-        listThemeBtns(theme);
-        /*var homeBtnsPrnt = document.createElement("div");
-        homeBtnsPrnt.appendChild(homeBtns);
-        homeBtnsPrnt.removeChild(homeBtns);*/
+        listThemeBtns(theme, true);
 
         var cntr = document.getElementsByClassName("container")[0];
         var carousel = createCrsl(cntr);
@@ -63,6 +60,7 @@ function addWrappers(theme) {
         };
         data.initialCrsl = false;
     } else {
+        listThemeBtns(theme, false);
         var carousel = document.getElementById("crsl");
         while (carousel.firstChild) {
             carousel.removeChild(carousel.firstChild);
@@ -276,10 +274,16 @@ function initSummer(da) {
     generateListTheme(da.summer, summerAlbumCovers, summerMP3s, summerCaptions, 'summer');
 }
 
-function listThemeBtns(theme) {
-    var themeBtns = document.getElementById("homepage");
-    themeBtns.style.margin = "20px auto";
-    document.getElementById("cruising").parentNode.style.display= "none";
+function listThemeBtns(theme, frmHmPage) {
+    if (frmHmPage) {
+        var themeBtns = document.getElementById("homepage");
+        themeBtns.style.margin = "20px auto";
+        document.getElementById(theme[0].name).parentNode.style.display = "none";
+    } else {
+        document.getElementById(theme[0].name).parentNode.style.display = "none";
+        document.getElementById(data.inView).parentNode.style.display = "";
+    }
+    data.inView = theme[0].name;
 }
 
 function cruising() {
