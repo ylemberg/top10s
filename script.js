@@ -277,7 +277,9 @@ function initSummer(da) {
 function listThemeBtns(theme, frmHmPage) {
     if (frmHmPage) {
         var themeBtns = document.getElementById("homepage");
-        themeBtns.style.margin = "20px auto";
+        themeBtns.removeChild(themeBtns.firstChild);
+        themeBtns.removeChild(themeBtns.firstChild);
+        themeBtns.style.margin = "15px auto";
         document.getElementById(theme[0].name).parentNode.style.display = "none";
     } else {
         document.getElementById(theme[0].name).parentNode.style.display = "none";
