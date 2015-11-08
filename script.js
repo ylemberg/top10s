@@ -88,6 +88,7 @@ function createCrsl(cnr) {
     crsl.setAttribute('id', "myCarousel");
     crsl.setAttribute('class', "carousel slide");
     crsl.setAttribute('data-interval', "false");
+    crsl.setAttribute('keyboard', "true");
     cnr.appendChild(crsl);
 
     var crslInner = document.createElement("div");

@@ -31,7 +31,7 @@
         margin: 0 auto;
     }
     
-    .btn-lst {
+    /*.btn-lst {
         background: #CCCC00 none repeat scroll 0 0;
         border-color: #d43f3a;
         border: 1px solid transparent;
@@ -42,15 +42,11 @@
     
     .btn-lst:hover {
         background: #E6E600 none repeat scroll 0 0;
-    }
+    }*/
     
     #homepage {
         margin: 300px auto;
         text-align: center;
-    }
-    
-    .btn-group-justified {
-        margin: 0 auto;
     }
     
     audio {
@@ -80,47 +76,14 @@
                 </div>
             </div>
         </div>
-    <!--<div class="dropdown">
-        <a data-toggle="dropdown" class="btn btn-lst dropdown-toggle" type="button" href="">List Theme<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="#" class="cruising">Cruising Songs</a></li>
-            <li><a href="#" class="summer">Summer Songs</a></li>
-            <li><a href="#" class="introspective hip hop">Introspective Hip Hop Songs</a></li>
-        </ul>
-    </div>-->
     <div class="container">
         <h1 class="top-10-name">
             <strong id="list-name">
             </strong>
         </h1>
         <br>
-        <!--<div id="myCarousel" class="carousel slide" data-interval="false">
-            <div class="carousel-inner" role="listbox" id="crsl">
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>-->
         <script>
         $(document).ready(function() {
-            // Enable Carousel Controls
-            $(".left").click(function() {
-                debugger;
-                document.getElementById("list-name").innerHTML = "LEFT";
-                $("#myCarousel").carousel("prev");
-                myAudio.pause();
-            });
-            $(".right").click(function() {
-                debugger;
-                document.getElementById("list-name").innerHTML = "RIGHT";
-                $("#myCarousel").carousel("next");
-                myAudio.pause();
-            });
             $(".cruising").click(function() {
                 addWrappers(data.cruising);
                 console.log("E still crusin");
