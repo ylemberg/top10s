@@ -21,6 +21,7 @@ function addImages(item, song) {
 }
 
 function addSongs(item, song) {
+    //implement JPlayer circle player?
     var enableControls = function(a) {
         a.controls = true;
         a.load();
