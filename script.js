@@ -21,26 +21,25 @@ function addImages(item, song) {
 }
 
 function addSongs(item, song) {
-    //implement JPlayer circle player?
-    var enableControls = function(a) {
-        a.controls = true;
-        a.load();
-    }
-    var d = document.createElement('div');
-    d.setAttribute('style', "margin: 350px 325px; position:absolute; top:0; left:0;");
-    var aud = document.createElement('audio');
-    aud.setAttribute('id', "myAudio");
-    enableControls(aud);
-    var source = document.createElement('source');
-    source.setAttribute('src', "mp3s/" + song.name + '/' + song.mp3 + ".mp3");
-    aud.appendChild(source);
-    d.appendChild(aud);
-    item.appendChild(d);
+    var sm2 = document.createElement('div');
+    sm2.setAttribute('class', "sm2-inline-list");
+    var ui360 = document.createElement('div');
+    ui360.setAttribute('class', "ui360 ui360-vis");
+    ui360.setAttribute('style', "margin: 65px 340px; position:absolute; top:0; left:0;");
+    var a = document.createElement('a');
+    a.setAttribute('href', "mp3s/" + song.name + '/' + song.mp3 + ".mp3");
+
+    ui360.appendChild(a);
+    sm2.appendChild(ui360);
+    item.appendChild(sm2);
 }
 
 function addWrappers(theme) {
     if (data.initialCrsl) {
-        listThemeBtns(theme, true);
+        soundManager.setup({
+            url: '../../swf/'
+        });
+        listThemeBtns(theme, data.initialCrsl);
 
         var cntr = document.getElementsByClassName("container")[0];
         var carousel = createCrsl(cntr);
@@ -61,7 +60,8 @@ function addWrappers(theme) {
         };
         data.initialCrsl = false;
     } else {
-        listThemeBtns(theme, false);
+        soundManager.reboot();
+        listThemeBtns(theme, data.initialCrsl);
         var carousel = document.getElementById("crsl");
         while (carousel.firstChild) {
             carousel.removeChild(carousel.firstChild);
