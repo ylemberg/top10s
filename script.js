@@ -37,7 +37,7 @@ function addSongs(item, song) {
 function addWrappers(theme) {
     if (data.initialCrsl) {
         soundManager.setup({
-            url: '../../swf/'
+            url: 'musicplayer/soundmanager/swf/'
         });
         listThemeBtns(theme, data.initialCrsl);
 
