@@ -25,6 +25,11 @@
     outline: 0 none;
 }
 
+.btn-default:hover {
+    background-color:#1a374c;
+    color: #337ab7;
+}
+
 body {
     background-color: gray
 }

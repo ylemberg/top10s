@@ -281,10 +281,11 @@ function listThemeBtns(theme, frmHmPage) {
         themeBtns.removeChild(themeBtns.firstChild);
         themeBtns.removeChild(themeBtns.firstChild);
         themeBtns.style.margin = "15px auto";
-        document.getElementById(theme[0].name).parentNode.style.display = "none";
+        document.getElementById(theme[0].name).style="background-color:#1a374c; color:#337ab7";
+        document.getElementById(theme[0].name).innerHTML.style="background-color:#337ab7";
     } else {
-        document.getElementById(theme[0].name).parentNode.style.display = "none";
-        document.getElementById(data.inView).parentNode.style.display = "";
+        document.getElementById(theme[0].name).style="background-color:#1a374c; color:#337ab7";
+        document.getElementById(data.inView).style="background-color:#FFFFFF; color: #000000";
     }
     data.inView = theme[0].name;
 }
