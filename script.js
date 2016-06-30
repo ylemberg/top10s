@@ -1,6 +1,24 @@
 var data = {};
 initData(data);
 
+var btn_cruising = document.querySelector("#cruising");
+var btn_ihh = document.querySelector("#introspectivehiphop");
+var btn_night = document.querySelector("#night");
+var btn_summer = document.querySelector("#summer");
+
+btn_cruising.addEventListener("click", function() {
+    addWrappers(data.cruising);
+});
+btn_ihh.addEventListener("click", function() {
+    addWrappers(data.introspec);
+});
+btn_night.addEventListener("click", function() {
+    addWrappers(data.night);
+});
+btn_summer.addEventListener("click", function() {
+    addWrappers(data.summer);
+});
+
 function addCaptions(item, song) {
     var caption = document.createElement('div');
     caption.setAttribute('class', "carousel-caption");
@@ -281,31 +299,11 @@ function listThemeBtns(theme, frmHmPage) {
         themeBtns.removeChild(themeBtns.firstChild);
         themeBtns.removeChild(themeBtns.firstChild);
         themeBtns.style.margin = "15px auto";
-        document.getElementById(theme[0].name).style="background-color:#1a374c; color:#337ab7";
-        document.getElementById(theme[0].name).innerHTML.style="background-color:#337ab7";
+        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
+        document.getElementById(theme[0].name).innerHTML.style = "background-color:#337ab7";
     } else {
-        document.getElementById(theme[0].name).style="background-color:#1a374c; color:#337ab7";
-        document.getElementById(data.inView).style="background-color:#FFFFFF; color: #000000";
+        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
+        document.getElementById(data.inView).style = "background-color:#FFFFFF; color: #000000";
     }
     data.inView = theme[0].name;
-}
-
-function cruising() {
-    document.getElementById("list-name").innerHTML = "TOP CRUISING SONGS";
-    addWrappers(data.cruising);
-}
-
-function introspective() {
-    document.getElementById("list-name").innerHTML = "TOP INTROSPECTIVE HIP HOP SONGS";
-    addWrappers(data.introspec);
-}
-
-function night() {
-    document.getElementById("list-name").innerHTML = "TOP NIGHT SONGS";
-    addWrappers(data.night);
-}
-
-function summer() {
-    document.getElementById("list-name").innerHTML = "TOP SUMMER SONGS";
-    addWrappers(data.summer);
 }
