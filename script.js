@@ -48,7 +48,7 @@ function addWrappers(theme) {
 
         for (var iDx = 0; iDx < theme.length; iDx++) {
             var itemDiv = document.createElement('div');
-            if (iDx == 0) {
+            if (iDx === 0) {
                 itemDiv.setAttribute('class', 'item active');
             } else {
                 itemDiv.setAttribute('class', 'item');
@@ -57,7 +57,7 @@ function addWrappers(theme) {
             addImages(itemDiv, theme[iDx]);
             addCaptions(itemDiv, theme[iDx]);
             addSongs(itemDiv, theme[iDx]);
-        };
+        }
         data.initialCrsl = false;
     } else {
         soundManager.reboot();
@@ -69,7 +69,7 @@ function addWrappers(theme) {
 
         for (var iDx = 0; iDx < theme.length; iDx++) {
             var itemDiv = document.createElement('div');
-            if (iDx == 0) {
+            if (iDx === 0) {
                 itemDiv.setAttribute('class', 'item active');
             } else {
                 itemDiv.setAttribute('class', 'item');
