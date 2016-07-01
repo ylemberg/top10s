@@ -41,7 +41,6 @@ function initData(dat) {
 
 function initCruising(da) {
     da.cruising = [];
-    debugger;
     var cruisingTxt = readTextFile("cruising.txt");
     var cruisingInfo = themeInfo(cruisingTxt);
     generateListTheme(da.cruising, cruisingInfo[0], cruisingInfo[1], cruisingInfo[2], 'cruising');
@@ -101,12 +100,11 @@ function readTextFile(file) {
 function themeInfo(txt) {
     txt = txt.replace(/ /g, "");
     var albCovers_bgn = txt.indexOf(":") + 1;
-    var albCovers_end = txt.indexOf("\r");
-    var albumCovers = txt.slice(albCovers_bgn, albCovers_end).split(",");
-
+    var albCovers_end = txt.substr(albCovers_bgn, txt.indexOf("MP3S")).lastIndexOf(".jpg") + 4;
+    var albumCovers = txt.slice(albCovers_bgn, albCovers_bgn + albCovers_end).split(",");
     txt = txt.substr(albCovers_end, txt.length);
     var mp3s_bgn = txt.indexOf(":") + 1;
-    var mp3s_end = txt.substr(mp3s_bgn, txt.length).indexOf("\r");
+    var mp3s_end = txt.substr(mp3s_bgn, txt.indexOf("Captions")).lastIndexOf("song") + 4;
     var mp3s = txt.slice(mp3s_bgn, mp3s_bgn + mp3s_end).split(",");
 
     txt = txt.substr(mp3s_end, txt.length);
