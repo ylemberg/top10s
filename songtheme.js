@@ -2,9 +2,9 @@ function addCaptions(item, song) {
     var caption = document.createElement('div');
     caption.setAttribute('class', "carousel-caption");
     var songTitle = document.createElement('h3');
-    songTitle.innerHTML = song.caption.substring(0, song.caption.indexOf(','));
+    songTitle.innerHTML = song.caption.substring(0, song.caption.indexOf('_'));
     var artist = document.createElement('p');
-    artist.innerHTML = song.caption.substring(song.caption.indexOf(',') + 1, song.caption.length);
+    artist.innerHTML = song.caption.substring(song.caption.indexOf('_') + 1, song.caption.length);
 
     caption.appendChild(songTitle);
     caption.appendChild(artist);
