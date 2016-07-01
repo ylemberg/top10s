@@ -41,6 +41,7 @@ function initData(dat) {
 
 function initCruising(da) {
     da.cruising = [];
+    debugger;
     var cruisingTxt = readTextFile("cruising.txt");
     var cruisingInfo = themeInfo(cruisingTxt);
     generateListTheme(da.cruising, cruisingInfo[0], cruisingInfo[1], cruisingInfo[2], 'cruising');
