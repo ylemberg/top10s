@@ -26,6 +26,7 @@ function initData(dat) {
 }
 
 function initCruising(da) {
+    //Array of objects in which each object has an album cover, mp3, caption, and name
     da.cruising = [];
     var cruisingTxt = readTextFile("cruising.txt");
     var cruisingInfo = themeInfo(cruisingTxt);
@@ -33,6 +34,7 @@ function initCruising(da) {
 }
 
 function initIntrospec(da) {
+    //Array of objects in which each object has an album cover, mp3, caption, and name
     da.introspec = [];
     var introspecTxt = readTextFile("introspec.txt");
     var introspecInfo = themeInfo(introspecTxt);
@@ -40,6 +42,7 @@ function initIntrospec(da) {
 }
 
 function initNight(da) {
+    //Array of objects in which each object has an album cover, mp3, caption, and name
     da.night = [];
     var nightTxt = readTextFile("night.txt");
     var nightInfo = themeInfo(nightTxt);
@@ -47,6 +50,7 @@ function initNight(da) {
 }
 
 function initSummer(da) {
+    //Array of objects in which each object has an album cover, mp3, caption, and name
     da.summer = [];
     var summerTxt = readTextFile("summer.txt");
     var summerInfo = themeInfo(summerTxt);
