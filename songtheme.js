@@ -1,3 +1,8 @@
+/*
+* Add individual wrapper
+* Each wrapper contains a song, image, and artist/title
+*/
+
 function addCaptions(item, song) {
     var caption = document.createElement('div');
     caption.setAttribute('class', "carousel-caption");
@@ -32,17 +37,22 @@ function addSongs(item, song) {
 }
 
 function addWrappers(theme) {
+	//If creating wrapper from home page
+	//Else not creating wrapper for the first time
     if (data.initialCrsl) {
         soundManager.setup({
             url: 'musicplayer/soundmanager/swf/'
         });
+        //Generate the proper theme buttons at the top of the page
         listThemeBtns(theme, data.initialCrsl);
 
+        //Creating carousel
         var cntr = document.getElementsByClassName("container")[0];
         var carousel = createCrsl(cntr);
         createLarrow(carousel);
         createRarrow(carousel);
 
+        //Creating a wrapper for every song
         for (var iDx = 0; iDx < theme.length; iDx++) {
             var itemDiv = document.createElement('div');
             if (iDx === 0) {
@@ -57,13 +67,18 @@ function addWrappers(theme) {
         }
         data.initialCrsl = false;
     } else {
+    	//Have to reboot music player if already created before
         soundManager.reboot();
+        //Generate the proper theme buttons at the top of the page
         listThemeBtns(theme, data.initialCrsl);
+
+        //Creating carousel
         var carousel = document.getElementById("crsl");
         while (carousel.firstChild) {
             carousel.removeChild(carousel.firstChild);
         }
 
+        //Creating a wrapper for every song
         for (var iDx = 0; iDx < theme.length; iDx++) {
             var itemDiv = document.createElement('div');
             if (iDx === 0) {

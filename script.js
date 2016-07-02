@@ -1,6 +1,8 @@
+//Object where all music data is stored
 var data = {};
 initData(data);
 
+//Event listeners for theme buttons
 var btn_cruising = document.querySelector("#cruising");
 var btn_ihh = document.querySelector("#introspectivehiphop");
 var btn_night = document.querySelector("#night");
@@ -19,6 +21,9 @@ btn_summer.addEventListener("click", function() {
     addWrappers(data.summer);
 });
 
+/*
+* Create object with theme images/mp3s/captions
+*/
 function generateListTheme(theme, albumcovers, mp3s, captions, name) {
     for (iDx = 0; iDx < albumcovers.length; iDx++) {
         var themeObj = {
@@ -67,6 +72,9 @@ function initSummer(da) {
     generateListTheme(da.summer, summerInfo[0], summerInfo[1], summerInfo[2], 'summer');
 }
 
+/*
+* Display proper theme buttons
+*/
 function listThemeBtns(theme, frmHmPage) {
     if (frmHmPage) {
         var themeBtns = document.getElementById("homepage");
@@ -82,6 +90,9 @@ function listThemeBtns(theme, frmHmPage) {
     data.inView = theme[0].name;
 }
 
+/*
+* Read .txt file
+*/
 function readTextFile(file) {
     var txt = "";
     var rawFile = new XMLHttpRequest();
@@ -97,6 +108,9 @@ function readTextFile(file) {
     return txt;
 }
 
+/*
+* Generate theme info from the .txt file
+*/
 function themeInfo(txt) {
     txt = txt.replace(/ /g, "");
     var albCovers_bgn = txt.indexOf(":") + 1;
