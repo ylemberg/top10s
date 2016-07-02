@@ -2,28 +2,9 @@
 var data = {};
 initData(data);
 
-//Event listeners for theme buttons
-var btn_cruising = document.querySelector("#cruising");
-var btn_ihh = document.querySelector("#introspectivehiphop");
-var btn_night = document.querySelector("#night");
-var btn_summer = document.querySelector("#summer");
-
-btn_cruising.addEventListener("click", function() {
-    addWrappers(data.cruising);
-});
-btn_ihh.addEventListener("click", function() {
-    addWrappers(data.introspec);
-});
-btn_night.addEventListener("click", function() {
-    addWrappers(data.night);
-});
-btn_summer.addEventListener("click", function() {
-    addWrappers(data.summer);
-});
-
 /*
-* Create object with theme images/mp3s/captions
-*/
+ * Create object with theme images/mp3s/captions
+ */
 function generateListTheme(theme, albumcovers, mp3s, captions, name) {
     for (iDx = 0; iDx < albumcovers.length; iDx++) {
         var themeObj = {
@@ -73,26 +54,8 @@ function initSummer(da) {
 }
 
 /*
-* Display proper theme buttons
-*/
-function listThemeBtns(theme, frmHmPage) {
-    if (frmHmPage) {
-        var themeBtns = document.getElementById("homepage");
-        themeBtns.removeChild(themeBtns.firstChild);
-        themeBtns.removeChild(themeBtns.firstChild);
-        themeBtns.style.margin = "15px auto";
-        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
-        document.getElementById(theme[0].name).innerHTML.style = "background-color:#337ab7";
-    } else {
-        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
-        document.getElementById(data.inView).style = "background-color:#FFFFFF; color: #000000";
-    }
-    data.inView = theme[0].name;
-}
-
-/*
-* Read .txt file
-*/
+ * Read .txt file
+ */
 function readTextFile(file) {
     var txt = "";
     var rawFile = new XMLHttpRequest();
@@ -109,8 +72,8 @@ function readTextFile(file) {
 }
 
 /*
-* Generate theme info from the .txt file
-*/
+ * Generate theme info from the .txt file
+ */
 function themeInfo(txt) {
     txt = txt.replace(/ /g, "");
     var albCovers_bgn = txt.indexOf(":") + 1;

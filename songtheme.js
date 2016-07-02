@@ -1,7 +1,26 @@
 /*
-* Add individual wrapper
-* Each wrapper contains a song, image, and artist/title
-*/
+ * Add individual wrapper
+ * Each wrapper contains a song, image, and artist/title
+ */
+
+//Variables for event listeners for theme buttons
+var btn_cruising = document.querySelector("#cruising");
+var btn_ihh = document.querySelector("#introspectivehiphop");
+var btn_night = document.querySelector("#night");
+var btn_summer = document.querySelector("#summer");
+
+btn_cruising.addEventListener("click", function() {
+    addWrappers(data.cruising);
+});
+btn_ihh.addEventListener("click", function() {
+    addWrappers(data.introspec);
+});
+btn_night.addEventListener("click", function() {
+    addWrappers(data.night);
+});
+btn_summer.addEventListener("click", function() {
+    addWrappers(data.summer);
+});
 
 function addCaptions(item, song) {
     var caption = document.createElement('div');
@@ -37,8 +56,8 @@ function addSongs(item, song) {
 }
 
 function addWrappers(theme) {
-	//If creating wrapper from home page
-	//Else not creating wrapper for the first time
+    //If creating wrapper from home page
+    //Else not creating wrapper for the first time
     if (data.initialCrsl) {
         soundManager.setup({
             url: 'musicplayer/soundmanager/swf/'
@@ -67,7 +86,7 @@ function addWrappers(theme) {
         }
         data.initialCrsl = false;
     } else {
-    	//Have to reboot music player if already created before
+        //Have to reboot music player if already created before
         soundManager.reboot();
         //Generate the proper theme buttons at the top of the page
         listThemeBtns(theme, data.initialCrsl);
@@ -92,4 +111,22 @@ function addWrappers(theme) {
             addSongs(itemDiv, theme[iDx]);
         }
     }
+}
+
+/*
+ * Display proper theme buttons
+ */
+function listThemeBtns(theme, frmHmPage) {
+    if (frmHmPage) {
+        var themeBtns = document.getElementById("homepage");
+        themeBtns.removeChild(themeBtns.firstChild);
+        themeBtns.removeChild(themeBtns.firstChild);
+        themeBtns.style.margin = "15px auto";
+        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
+        document.getElementById(theme[0].name).innerHTML.style = "background-color:#337ab7";
+    } else {
+        document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
+        document.getElementById(data.inView).style = "background-color:#FFFFFF; color: #000000";
+    }
+    data.inView = theme[0].name;
 }

@@ -1,7 +1,7 @@
 /*
-* Create carousel
-* Using mostly bootstrap css
-*/
+ * Create carousel
+ * Using mostly bootstrap css
+ */
 
 function createCrsl(cnr) {
     var crsl = document.createElement("div");
