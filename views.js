@@ -10,16 +10,16 @@ var btn_night = document.querySelector("#night");
 var btn_summer = document.querySelector("#summer");
 
 btn_cruising.addEventListener("click", function() {
-    addWrappers(data.cruising);
+    addWrappers(songs.cruising);
 });
 btn_ihh.addEventListener("click", function() {
-    addWrappers(data.introspec);
+    addWrappers(songs.introspec);
 });
 btn_night.addEventListener("click", function() {
-    addWrappers(data.night);
+    addWrappers(songs.night);
 });
 btn_summer.addEventListener("click", function() {
-    addWrappers(data.summer);
+    addWrappers(songs.summer);
 });
 
 function addCaptions(item, song) {
@@ -58,12 +58,12 @@ function addSongs(item, song) {
 function addWrappers(theme) {
     //If creating wrapper from home page
     //Else not creating wrapper for the first time
-    if (data.initialCrsl) {
+    if (songs.initialCrsl) {
         soundManager.setup({
             url: 'musicplayer/soundmanager/swf/'
         });
         //Generate the proper theme buttons at the top of the page
-        listThemeBtns(theme, data.initialCrsl);
+        listThemeBtns(theme, songs.initialCrsl);
 
         //Creating carousel
         var cntr = document.getElementsByClassName("container")[0];
@@ -84,12 +84,12 @@ function addWrappers(theme) {
             addCaptions(itemDiv, theme[iDx]);
             addSongs(itemDiv, theme[iDx]);
         }
-        data.initialCrsl = false;
+        songs.initialCrsl = false;
     } else {
         //Have to reboot music player if already created before
         soundManager.reboot();
         //Generate the proper theme buttons at the top of the page
-        listThemeBtns(theme, data.initialCrsl);
+        listThemeBtns(theme, songs.initialCrsl);
 
         //Creating carousel
         var carousel = document.getElementById("crsl");
@@ -126,7 +126,7 @@ function listThemeBtns(theme, frmHmPage) {
         document.getElementById(theme[0].name).innerHTML.style = "background-color:#337ab7";
     } else {
         document.getElementById(theme[0].name).style = "background-color:#1a374c; color:#337ab7";
-        document.getElementById(data.inView).style = "background-color:#FFFFFF; color: #000000";
+        document.getElementById(songs.inView).style = "background-color:#FFFFFF; color: #000000";
     }
-    data.inView = theme[0].name;
+    songs.inView = theme[0].name;
 }
