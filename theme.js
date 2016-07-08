@@ -81,8 +81,8 @@ class Theme {
     /*
      * Generate theme info from the .txt file
      */
-    themeInfo(txt) {
-        txt = txt.replace(/ /g, "");
+    themeInfo(text) {
+        var txt = text.replace(/ /g, "");
         var albCovers_bgn = txt.indexOf(":") + 1;
         var albCovers_end = txt.substr(albCovers_bgn, txt.indexOf("MP3S")).lastIndexOf(".jpg") + 4;
         var albumCovers = txt.slice(albCovers_bgn, albCovers_bgn + albCovers_end).split(",");
@@ -91,7 +91,7 @@ class Theme {
         var mp3s_end = txt.substr(mp3s_bgn, txt.indexOf("Captions")).lastIndexOf("song") + 4;
         var mp3s = txt.slice(mp3s_bgn, mp3s_bgn + mp3s_end).split(",");
 
-        txt = txt.substr(mp3s_end, txt.length);
+        txt = text.substr(text.indexOf("Captions"), text.length);
         var cptns_bgn = txt.indexOf(":") + 1;
         var captions = txt.slice(cptns_bgn, txt.length).split(",");
         return [albumCovers, mp3s, captions];

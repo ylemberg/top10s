@@ -8,6 +8,8 @@ var btn_cruising = document.querySelector("#cruising");
 var btn_ihh = document.querySelector("#introspectivehiphop");
 var btn_night = document.querySelector("#night");
 var btn_summer = document.querySelector("#summer");
+var sm2Player; //SoundManager2 Player 
+var itemactive; //div displayng song info
 
 btn_cruising.addEventListener("click", function() {
     addWrappers(songs.cruising);
@@ -111,6 +113,7 @@ function addWrappers(theme) {
             addSongs(itemDiv, theme[iDx]);
         }
     }
+    nowPlaying();
 }
 
 /*
@@ -129,4 +132,72 @@ function listThemeBtns(theme, frmHmPage) {
         document.getElementById(songs.inView).style = "background-color:#FFFFFF; color: #000000";
     }
     songs.inView = theme[0].name;
+}
+
+/*
+ * Setting up event listener for when you play a new song
+ */
+function nowPlaying() {
+    displaySong("initial");
+
+    var left = document.querySelector(".left.carousel-control");
+    left.addEventListener("click", function() {
+        displaySong("left");
+    });
+    var right = document.querySelector(".right.carousel-control");
+    right.addEventListener("click", function() {
+        displaySong("right");
+    });
+}
+
+/*
+ * Display the title/artist for the song that is currently playing
+ */
+function displaySong(calledBy) {
+    var title;
+    var artist;
+    //Refactor title/artist/sm2Player with less hardcoding
+    if (calledBy === "initial") {
+        itemactive = document.querySelector(".item.active");
+        title = itemactive.children[1].firstChild.innerHTML;
+        artist = itemactive.children[1].lastChild.innerHTML;
+        sm2Player = document.querySelector(".item.active .ui360");
+    } else if (calledBy === "left") {
+        sm2Player.removeEventListener("click", displayTitleArtist);
+        itemactive = document.querySelector(".item.active");
+        if (itemactive.previousSibling) {
+            title = itemactive.previousSibling.children[1].firstChild.innerHTML;
+            artist = itemactive.previousSibling.children[1].lastChild.innerHTML;
+            sm2Player = itemactive.previousSibling.children[2].firstChild.firstChild;
+        } else { //Went from first song to the last song
+            title = itemactive.parentNode.lastChild.children[1].firstChild.innerHTML;
+            artist = itemactive.parentNode.lastChild.children[1].lastChild.innerHTML;
+            sm2Player = itemactive.parentNode.lastChild.children[2].firstChild.firstChild;
+        }
+    } else if (calledBy === "right") {
+        sm2Player.removeEventListener("click", displayTitleArtist);
+        itemactive = document.querySelector(".item.active");
+        if (itemactive.nextSibling) {
+            title = itemactive.nextSibling.children[1].firstChild.innerHTML;
+            artist = itemactive.nextSibling.children[1].lastChild.innerHTML;
+            sm2Player = itemactive.nextSibling.children[2].firstChild.firstChild;
+        } else { //Went from last song to the first song
+            title = itemactive.parentNode.firstChild.children[1].firstChild.innerHTML;
+            artist = itemactive.parentNode.firstChild.children[1].lastChild.innerHTML;
+            sm2Player = itemactive.parentNode.firstChild.children[2].firstChild.firstChild;
+        }
+    }
+    //Create new event listener for the new song displayed in view
+    sm2Player.addEventListener("click", displayTitleArtist);
+
+    /*
+     * Helper function to actually display title/artist
+     */
+    function displayTitleArtist() {
+        var top10Name = document.querySelector(".top-10-name");
+        var display = "Now Playing: " + title + " - " + artist;
+        if (top10Name.innerHTML !== display) {
+            top10Name.innerHTML = display;
+        }
+    }
 }
