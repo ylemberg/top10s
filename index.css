@@ -33,3 +33,13 @@
 body {
     background-color: gray
 }
+
+.item {
+    position: absolute;;
+}
+
+.sm2-inline-list {
+    position:absolute;
+    left:36%;
+    bottom:13%;
+}
