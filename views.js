@@ -202,6 +202,10 @@ function displaySong(calledBy) {
     }
 }
 
+/*
+ * When the browser changes width, resize where 
+ * the SoundManager2 player displays
+ */
 function changeWidth() {
     var width = $(window).width();
     if (document.querySelector(".sm2-inline-list")) {
