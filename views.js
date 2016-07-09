@@ -89,6 +89,8 @@ function addWrappers(theme) {
     } else {
         //Have to reboot music player if already created before
         soundManager.reboot();
+        //Remove the name of the song that was playing
+        document.querySelector(".top-10-name").innerHTML = "";
         //Generate the proper theme buttons at the top of the page
         listThemeBtns(theme, songs.initialCrsl);
 
