@@ -85,7 +85,6 @@ function addWrappers(theme) {
             addCaptions(itemDiv, theme[iDx]);
             addSongs(itemDiv, theme[iDx]);
         }
-        changeWidth();
         songs.initialCrsl = false;
     } else {
         //Have to reboot music player if already created before
@@ -113,6 +112,7 @@ function addWrappers(theme) {
             addSongs(itemDiv, theme[iDx]);
         }
     }
+    changeWidth();
     nowPlaying();
 }
 
@@ -209,23 +209,33 @@ function displaySong(calledBy) {
 function changeWidth() {
     var width = $(window).width();
     if (document.querySelector(".sm2-inline-list")) {
-        var sm2 = document.querySelector(".sm2-inline-list");
+        var sm2 = document.querySelectorAll(".sm2-inline-list");
 
         if (width < 417) {
-            sm2.style.left = "-17%";
-            sm2.style.bottom = "-130%";
+            for (var idx = 0; idx < sm2.length; idx++) {
+                sm2[idx].style.left = "-17%";
+                sm2[idx].style.bottom = "-130%";
+            }
         } else if (width < 705) {
-            sm2.style.left = "23%";
-            sm2.style.bottom = "-23%";
+            for (var idx = 0; idx < sm2.length; idx++) {
+                sm2[idx].style.left = "23%";
+                sm2[idx].style.bottom = "-23%";
+            }
         } else if (width < 975) {
-            sm2.style.left = "25%";
-            sm2.style.bottom = "-13%";
+            for (var idx = 0; idx < sm2.length; idx++) {
+                sm2[idx].style.left = "25%";
+                sm2[idx].style.bottom = "-13%";
+            }
         } else if (width < 1180) {
-            sm2.style.left = "33%";
-            sm2.style.bottom = "5%";
+            for (var idx = 0; idx < sm2.length; idx++) {
+                sm2[idx].style.left = "33%";
+                sm2[idx].style.bottom = "-5%";
+            }
         } else {
-            sm2.style.left = "36%";
-            sm2.style.bottom = "13%";
+            for (var idx = 0; idx < sm2.length; idx++) {
+                sm2[idx].style.left = "36%";
+                sm2[idx].style.bottom = "13%";
+            }
         }
     }
 }
